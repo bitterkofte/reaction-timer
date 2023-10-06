@@ -6,8 +6,10 @@
     <!-- <p>{{ isPlaying }}</p>
     <p>{{ delay }}</p> -->
     <Block v-if="isPlaying" :delay="delay" @end="endGame" />
-    <p v-if="score">Reaction Time: <strong>{{ score }}</strong> ms</p>
+    <Results :score="score" />
     <button v-if="score" @click="restart" class='my-button'>restart</button>
+
+    <div v-if="highScore" class='high-score'>Highscore <strong>{{ highScore }}</strong> ms</div>
   </div>
 </template>
 
@@ -15,16 +17,18 @@
 //SCRIPT
 <script>
 import Block from './components/Block.vue'
+import Results from './components/Results.vue'
 export default {
   name: 'App',
   components: {
-    Block
+    Block, Results
   },
   data() {
     return {
       isPlaying: false,
       delay: null,
       score: null,
+      highScore: 0,
     }
   },
   methods: {
@@ -39,6 +43,7 @@ export default {
     },
     endGame (time) {
       this.score = time
+      if(this.highScore === 0 || time < this.highScore) this.highScore = time
     }
   }
 }
@@ -63,4 +68,9 @@ export default {
   margin: 0 auto;
 }
 
+.high-score {
+  position: fixed;
+  bottom: 10px;
+  margin: 0 auto;
+}
 </style>
