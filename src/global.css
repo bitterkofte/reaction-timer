@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Josefin+Sans&family=Tektur&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-size: 1.5rem;
+  font-family: 'Abel', Verdana, Geneva, Tahoma, sans-serif;
+  padding: 2em;
+  display: block;
+}
+button, input, textarea {
+  font-family: inherit;
+}
+ul {
+  list-style: none;
+}
+
+.my-button {
+  width: fit-content;
+  padding: 0.4em 0.7em;
+  display: block;
+
+  background: #7e7e7e;
+  border: none;
+  border-radius: 2em;
+  font-size: 0.8em;
+  color: aliceblue;
+  cursor: pointer;
+  user-select: none;
+  transition: all 400ms;
+}
+.my-button:hover {
+  background: #999999;
+}
+.my-button:active {
+  background: #00d5ff;
+}
+.my-button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
